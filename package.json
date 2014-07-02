@@ -1,0 +1,8 @@
+{
+  "name": "nib-health-fund-date-validators",
+  "description": "Re-usable date validation methods.",
+  "version": "0.0.1",
+  "dependencies": {
+    "moment": "2.7.0"
+  }
+}

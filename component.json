@@ -1,0 +1,10 @@
+{
+  "name": "date-validators",
+  "description": "Re-usable date validation methods.",
+  "scripts": [
+    "index.js"
+  ],
+  "dependencies": {
+    "moment/moment": "2.7.0"
+  }
+}
