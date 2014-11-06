@@ -1,6 +1,6 @@
-# date-validators
+# validate-date
 
-Re-usable date validation methods.
+Date validation methods.
 
 See the list of accepted formats at [moment's documentation](http://momentjs.com/docs/#/parsing/string-format/).
 
