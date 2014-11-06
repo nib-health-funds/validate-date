@@ -1,6 +1,6 @@
 var assert      = require('assert');
 var moment      = require('moment');
-var validators  = require('../index');
+var validators  = require('date-validators');
 
 describe('#date', function() {
 
@@ -47,6 +47,26 @@ describe('#date', function() {
 
   });
 
+  describe('#lessThanEq', function() {
+
+    var validator = validators.lessThanEq(moment('2015-01-01'), 'YYYY-MM-DD');
+
+    it('should return false', function() {
+      assert(!validator('2015-01-02'));
+      assert(!validator('2015-12-31'));
+      assert(!validator('2016-01-01'));
+
+    });
+
+    it('should return true', function() {
+      assert(validator('2015-01-01'));
+      assert(validator('2014-12-31'));
+      assert(validator('2014-01-01'));
+      assert(validator('2013-05-10'));
+    });
+
+  });
+
   describe('#greaterThan', function() {
 
     var validator1 = validators.greaterThan(moment('2015-01-01'), 'YYYY-MM-DD');
@@ -59,6 +79,24 @@ describe('#date', function() {
     });
 
     it('should return true', function() {
+      assert(validator1('2015-01-02'));
+      assert(validator1('2015-12-31'));
+      assert(validator1('2016-01-01'));
+    });
+
+  });
+  describe('#greaterThanEq', function() {
+
+    var validator1 = validators.greaterThanEq(moment('2015-01-01'), 'YYYY-MM-DD');
+
+    it('should return false', function() {
+      assert(!validator1('2014-12-31'));
+      assert(!validator1('2014-01-01'));
+      assert(!validator1('2013-05-10'));
+    });
+
+    it('should return true', function() {
+      assert(validator1('2015-01-01'));
       assert(validator1('2015-01-02'));
       assert(validator1('2015-12-31'));
       assert(validator1('2016-01-01'));

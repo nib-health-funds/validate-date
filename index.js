@@ -1,6 +1,25 @@
 var moment = require('moment');
 
 /**
+ * Convert a value to a momentjs date if it isn't already one
+ * @param   {String|Date|Moment} value
+ * @returns {Moment}
+ */
+function toMoment(value) {
+
+  if (typeof value === 'string' || value instanceof Date) {
+    value = moment(value);
+  }
+
+  //ensure the date is valid
+  if (!(value && value.isValid())) {
+    throw Error('Invalid date');
+  }
+
+  return value;
+}
+
+/**
  * Parse the value into a date according to the specified format
  * @param   {string} value
  * @param   {string} format
@@ -40,23 +59,38 @@ module.exports = {
   lessThan: function(date, format) {
 
     //convert the date into a moment
-    if (typeof date === 'string' || date instanceof Date) {
-      date = moment(date);
-    }
+    date = toMoment(date);
 
     return function(value) {
 
       //parse the value
       var value = parse(value, format);
 
-      //ensure the date is valid
-      if (!(date && date.isValid())) {
-        return false;
-      }
-
       //if the moment is later than the moment you are passing to moment.fn.diff, the return value will be negative.
       var diff = date.diff(value);
       return (diff > 0);
+    }
+  },
+
+  /**
+   * Get whether the value is less than or equal to the specified date
+   * @param   {Date}          date    The date
+   * @param   {string}        format  The date format of the value
+   * @returns {function(*):boolean}
+   */
+  lessThanEq: function(date, format) {
+
+    //convert the date into a moment
+    date = toMoment(date);
+
+    return function(value) {
+
+      //parse the value
+      var value = parse(value, format);
+
+      //if the moment is later than the moment you are passing to moment.fn.diff, the return value will be negative.
+      var diff = date.diff(value);
+      return (diff >= 0);
     }
   },
 
@@ -69,23 +103,38 @@ module.exports = {
   greaterThan: function(date, format) {
 
     //convert the date into a moment
-    if (typeof date === 'string' || date instanceof Date) {
-      date = moment(date);
-    }
+    date = toMoment(date);
 
     return function(value) {
 
       //parse the value
       var value = parse(value, format);
 
-      //ensure the date is valid
-      if (!(value && value.isValid())) {
-        return false;
-      }
-
       //if the moment is later than the moment you are passing to moment.fn.diff, the return value will be negative.
       var diff = date.diff(value);
       return (diff < 0);
+    }
+  },
+
+  /**
+   * Get whether the value is greater than or equal to the specified date
+   * @param   {Date}          date    The date
+   * @param   {string}        format  The date format of the value
+   * @returns {function(*):boolean}
+   */
+  greaterThanEq: function(date, format) {
+
+    //convert the date into a moment
+    date = toMoment(date);
+
+    return function(value) {
+
+      //parse the value
+      var value = parse(value, format);
+
+      //if the moment is later than the moment you are passing to moment.fn.diff, the return value will be negative.
+      var diff = date.diff(value);
+      return (diff <= 0);
     }
   }
 

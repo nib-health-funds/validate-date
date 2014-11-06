@@ -5,6 +5,7 @@
     "index.js"
   ],
   "dependencies": {
+    "component/assert": "*",
     "moment/moment": "2.7.0"
   }
 }
