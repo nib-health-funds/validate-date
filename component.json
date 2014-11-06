@@ -1,6 +1,6 @@
 {
-  "name": "date-validators",
-  "description": "Re-usable date validation methods.",
+  "name": "validate-date",
+  "description": "Date validation methods.",
   "scripts": [
     "index.js"
   ],

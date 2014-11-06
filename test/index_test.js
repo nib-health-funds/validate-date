@@ -1,6 +1,6 @@
 var assert      = require('assert');
 var moment      = require('moment');
-var validators  = require('date-validators');
+var validators  = typeof(process) === 'undefined' ? require('validate-date') : require('..');
 
 describe('#date', function() {
 
