@@ -18,9 +18,17 @@ Returns a method that will return whether a value is a string, adheres to the sp
 
 Returns a method that will return whether a value is valid and less than the specified date.
 
+### .lessThanEq(date : Date|moment, format : string)
+
+Returns a method that will return whether a value is valid and less than or equal to the specified date.
+
 ### .greaterThan(date : Date|moment, format : string)
 
 Returns a method that will return whether a value is valid and greater than the specified date.
+
+### .greaterThanEq(date : Date|moment, format : string)
+
+Returns a method that will return whether a value is valid and greater than or equal to the specified date.
 
 ## Usage
 
