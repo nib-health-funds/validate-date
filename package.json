@@ -1,6 +1,6 @@
 {
   "name": "@nib/validate-date",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Date validation methods.",
   "repository": {
     "type": "git",
@@ -10,6 +10,6 @@
     "url": "https://github.com/nib-health-funds/validate-date/issues"
   },
   "dependencies": {
-    "moment": "2.7.0"
+    "moment": "^2.7.0"
   }
 }
